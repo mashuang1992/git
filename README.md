@@ -315,6 +315,69 @@ a、未标记、未追踪
 b、已提交：该文件已经被git管理起来，接下来对该文件进行相关操作就可以实现版本控制的	效果
 c、已修改：某个文件已经被提交到暂存区过了，如果对该文件进行修改，该文件的状态就是已	修改
 d、已暂存：某个文件已经被提交到暂存区了
+
+```
+## git提交忽略文件
+
+一. 首先在仓库中创建隐藏文件“.gitignore”,选中本地仓库，右击“Git Bash Here”,然后执行如下命令：
+
+touch .gitignore
+
+二. 用文本编辑器如editplus或notepad++输入需要忽略的文件或文件名，如下所示：
+
+```bash
+
+##ignore this file##
+/target/ 
+
+.classpath
+.project
+.settings      
+ ##filter databfile、sln file##
+*.mdb  
+*.ldb  
+*.sln    
+##class file##
+*.com  
+*.class  
+*.dll  
+*.exe  
+*.o  
+*.so  
+# compression file
+*.7z  
+*.dmg  
+*.gz  
+*.iso  
+*.jar  
+*.rar  
+*.tar  
+*.zip  
+*.via
+*.tmp
+*.err 
+# OS generated files #  
+.DS_Store  
+.DS_Store?  
+._*  
+.Spotlight-V100  
+.Trashes  
+Icon?  
+ehthumbs.db  
+Thumbs.db  
+```
+
+备注：
+
+```bash
+/target/ ：过滤文件设置，表示过滤这个文件夹
+
+*.mdb  ，*.ldb  ，*.sln 表示过滤某种类型的文件
+/mtk/do.c ，/mtk/if.h  表示指定过滤某个文件下具体文件
+ !*.c , !/dir/subdir/     !开头表示不过滤
+ *.[oa]    支持通配符：过滤repo中所有以.o或者.a为扩展名的文件
+
+该方法保证任何人都提交不了这类文件
 ```
 ## 搭建gitHub静态服务器
 - 新建一个仓库，仓库名字：用户名.github.io,
